@@ -15,7 +15,7 @@
   "scripts": {
     "lint": "./node_modules/eslint/bin/eslint.js src",
     "lint-fix": "./node_modules/eslint/bin/eslint.js src --fix",
-    "start": "npm run clean && webpack-dev-server --config webpack.config.babel.js --progress --hot --inline"
+    "start": "webpack-dev-server --config webpack.config.babel.js --progress --hot --inline"
   },
   "license": "ISC",
   "devDependencies": {
