@@ -1,0 +1,60 @@
+{
+  "name": "gh-explorer",
+  "version": "0.1.0",
+  "description": "github explorer",
+  "main": "src/app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nerder/gh-explorer.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/nerder/gh-explorer"
+  },
+  "homepage": "https://github.com/nerder/gh-explorer",
+  "scripts": {
+    "lint": "./node_modules/eslint/bin/eslint.js src",
+    "lint-fix": "./node_modules/eslint/bin/eslint.js src --fix",
+    "start": "npm run clean && UV_THREADPOOL_SIZE=10 webpack-dev-server --config webpack.config.babel.js --progress --hot --inline",
+    "clean": "rm -rf build/* && mkdir -p build"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^0.5.4",
+    "babel-cli": "^6.8.0",
+    "babel-core": "^6.9.0",
+    "babel-eslint": "^6.0.4",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-lodash": "^3.1.4",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.14.0",
+    "buildo-react-components": "github:buildo/react-components",
+    "classnames": "^2.1.5",
+    "css-loader": "^0.23.1",
+    "eslint": "^3.5.0",
+    "eslint-config-buildo": "github:buildo/eslint-config",
+    "eslint-loader": "^1.3.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.1",
+    "html-webpack-plugin": "^1.5.2",
+    "json-loader": "^0.5.1",
+    "lodash": "^4.16.1",
+    "node-sass": "^3.4.1",
+    "react": "^0.14.8",
+    "react-document-title": "^1.0.2",
+    "react-dom": "^0.14.8",
+    "react-router": "^0.13.5",
+    "resolve-url-loader": "^1.4.3",
+    "revenge": "^0.4.5",
+    "revenge-docgen": "^0.2.0",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "tcomb-react": "^0.9.3",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1",
+    "yargs": "^3.24.0"
+  }
+}

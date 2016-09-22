@@ -1,0 +1,11 @@
+*.log
+*.log*
+config*.json
+config*.json~
+coverage
+node_modules
+build/*
+mocha.json
+morpheus.jar
+
+assets/themes*

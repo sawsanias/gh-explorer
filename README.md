@@ -1,1 +1,1 @@
-# gh-explorer
+# gh-explorer-seed
