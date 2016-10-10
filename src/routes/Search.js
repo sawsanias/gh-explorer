@@ -14,7 +14,15 @@ const repositories = [
   { name: 'Rep5', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
   { name: 'Rep6', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
   { name: 'Rep7', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
-  { name: 'Rep8', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' }
+  { name: 'Rep8', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
+  { name: 'Rep11', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
+  { name: 'Rep12', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
+  { name: 'Rep13', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
+  { name: 'Rep14', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
+  { name: 'Rep15', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
+  { name: 'Rep16', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
+  { name: 'Rep17', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
+  { name: 'Rep18', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' }
 ];
 
 
@@ -26,7 +34,7 @@ export default class Search extends React.Component {
     const foundResult = !undefinedResult && repositories.length > 0; //simply !undefinedResult && !emptyResult
 
     return (
-      <FlexView hAlignContent='center' column>
+      <FlexView hAlignContent='center' column grow>
         {undefinedResult && <UndefinedResult />}
         {emptyResult && <EmptyResult />}
         {foundResult && <SearchResultPanel items={repositories} />}
