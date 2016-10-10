@@ -12,7 +12,7 @@ export default {
   module: {
     ...webpackBase.module,
     loaders: webpackBase.module.loaders.concat([{
-      test: /\.scss$/,
+      test: /\.s?css$/,
       loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap')
     }])
   },
