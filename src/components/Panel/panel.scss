@@ -1,1 +1,42 @@
-@import '~buildo-react-components/src/Panel/panel.scss'; // Panel's default style from b-r-c
+@import '~buildo-react-components/src/Panel/panel.scss'; // Badge's default style from b-r-c
+
+.panel {
+
+  .card {
+    .description {
+      margin-right: 20px;
+      font-size: 14px;
+      line-height: 1.5;
+
+      .title {
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .subtitle {
+        padding-top: 10px;
+        padding-bottom: 15px;
+        font-size: 14px;
+
+        .author {
+          padding-right: 9px;
+          border-right: 1px solid silver;
+          color: blue;
+
+          &::before {
+            content: 'by\00a0';
+            color: grey;
+          }
+        }
+
+        .date {
+          padding-left: 9px;
+        }
+      }
+    }
+  }
+
+  .divider {
+    margin: 30px 0;
+  }
+}
