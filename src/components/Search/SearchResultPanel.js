@@ -1,6 +1,6 @@
 import React from 'react';
-import Panel from './Panel';
-import ScrollView from './ScrollView';
+import Panel from '../Panel';
+import ScrollView from '../ScrollView';
 import FlexView from 'react-flexview';
 
 const Card = ({ title, author, date, children }) => (

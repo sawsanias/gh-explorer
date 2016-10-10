@@ -1,9 +1,9 @@
 import React from 'react';
 import { RouteHandler } from 'react-router';
 import FlexView from 'react-flexview';
-import SearchResultPanel from 'components/SearchResultPanel';
-import EmptyResult from 'components/EmptyResult';
-import UndefinedResult from 'components/UndefinedResult';
+import SearchResultPanel from 'components/Search/SearchResultPanel';
+import EmptyResult from 'components/Search/EmptyResult';
+import UndefinedResult from 'components/Search/UndefinedResult';
 
 //TODO: To gete the json from the service
 const repositories = [
