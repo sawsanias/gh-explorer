@@ -1,7 +1,8 @@
 import React from 'react';
 import { RouteHandler } from 'react-router';
 import FlexView from 'react-flexview';
-import { NavBar, Button } from 'buildo-react-components';
+import Button from '../components/Button';
+import { NavBar } from 'buildo-react-components';
 
 
 
