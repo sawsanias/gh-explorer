@@ -2,9 +2,7 @@ import React from 'react';
 import { RouteHandler } from 'react-router';
 import FlexView from 'react-flexview';
 import Button from '../components/Button';
-import { NavBar } from 'buildo-react-components';
-
-
+import NavBar from '../components/NavBar';
 
 export default class Home extends React.Component {
 
