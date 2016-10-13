@@ -30,6 +30,11 @@ export default {
         test: /\.jsx?$/,
         loaders: ['babel'],
         include: [paths.SRC]
+      },
+      {
+        test: /\.json$/,
+        loaders: ['json'],
+        include: [paths.SRC]
       }
     ],
     preLoaders: [
