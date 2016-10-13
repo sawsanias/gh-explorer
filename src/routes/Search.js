@@ -15,7 +15,7 @@ export default class Search extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://api.github.com/search/repositories', { params: { q: 'test' } })
+    axios.get('http://api.github.com/search/repositories', { params: { q: this.props.query.query } })
       .then(this.assignRespositories)
       .catch((error) => console.log(error)); // eslint-disable-line
   }
