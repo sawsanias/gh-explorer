@@ -4,27 +4,7 @@ import FlexView from 'react-flexview';
 import SearchResultPanel from 'components/Search/SearchResultPanel';
 import EmptyResult from 'components/Search/EmptyResult';
 import UndefinedResult from 'components/Search/UndefinedResult';
-
-//TODO: To gete the json from the service
-const repositories = [
-  { name: 'Rep1', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
-  { name: 'Rep2', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
-  { name: 'Rep3', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
-  { name: 'Rep4', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
-  { name: 'Rep5', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
-  { name: 'Rep6', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
-  { name: 'Rep7', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
-  { name: 'Rep8', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
-  { name: 'Rep11', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
-  { name: 'Rep12', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
-  { name: 'Rep13', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
-  { name: 'Rep14', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
-  { name: 'Rep15', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
-  { name: 'Rep16', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
-  { name: 'Rep17', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' },
-  { name: 'Rep18', author: 'Sawsan', date: '12/01/2017', description: 'this is a test repository' }
-];
-
+import repositories from 'test/repositories.json';
 
 export default class Search extends React.Component {
 
