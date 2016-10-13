@@ -5,15 +5,28 @@ import Button from '../components/Button';
 import NavBar from '../components/NavBar';
 
 export default class Home extends React.Component {
+  state = { query: this.props.query.query || '' };
+
   static contextTypes = {
     router: React.PropTypes.func.isRequired
-  };
-  onClick = () => {
-    this.context.router.transitionTo('/search');
   }
+  onClick = () => {
+    this.context.router.transitionTo('/search', null, { query: this.state.query });
+  }
+
+  handleChange = (event) => {
+    this.setState({ query: event.target.value });
+  }
+
   left = () => <span> GH Explorer </span>;
   right = () => <Button primary icon='search' label='Search' onClick={this.onClick} />;
-  center = () =>   <input value={this.props.query} type='text' placeholder='Search repository' className='input-text' />
+  center = () =>   <input value={this.state.query} onChange={this.handleChange} type='text' placeholder='Search repository' className='input-text' />
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      query: nextProps.query.query || ''
+    });
+  }
 
   render() {
     const navBarProps = {
