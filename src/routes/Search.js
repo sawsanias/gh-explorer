@@ -14,10 +14,20 @@ export default class Search extends React.Component {
     this.setState({ repositories: response.data.items });
   }
 
+  fetchRepositories = (q) => {
+    axios.get('http://api.github.com/search/repositories', { params: { q } })
+    .then(this.assignRespositories)
+    .catch((error) => console.log(error)); // eslint-disable-line
+  }
+
   componentDidMount() {
-    axios.get('http://api.github.com/search/repositories', { params: { q: this.props.query.query } })
-      .then(this.assignRespositories)
-      .catch((error) => console.log(error)); // eslint-disable-line
+    this.fetchRepositories(this.props.query.query);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.query.query !== this.props.query.query ) {
+      this.fetchRepositories(nextProps.query.query);
+    }
   }
 
   render() {
