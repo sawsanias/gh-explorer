@@ -19,7 +19,7 @@ export default class Home extends React.Component {
   }
 
   left = () => <span> GH Explorer </span>;
-  right = () => <Button primary icon='search' label='Search' onClick={this.onClick} />;
+  right = () => <Button primary icon='search' label='Search' onClick={this.onClick} buttonState={this.state.query.trim() === '' ? 'not-allowed' : 'ready'} />;
   center = () =>   <input value={this.state.query} onChange={this.handleChange} type='text' placeholder='Search repository' className='input-text' />
 
   componentWillReceiveProps(nextProps) {
