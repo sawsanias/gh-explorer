@@ -18,8 +18,21 @@ export default class Home extends React.Component {
     this.setState({ query: event.target.value });
   }
 
-  handleFocus = (e) => {
-    e.target.select();
+  doFocus = () => {
+    this.myTextInput.focus();
+  }
+
+  handleFocus = () => {
+    if (typeof this.myTextInput !== 'undefined' || this.myTextInput !== null) {
+      this.myTextInput.select();
+    }
+  }
+
+  componentDidMount = () => {
+    this.doFocus();
+  }
+  componentDidUpdate = () => {
+    this.doFocus();
   }
 
   left = () => <span> GH Explorer </span>;
@@ -27,12 +40,12 @@ export default class Home extends React.Component {
   center = () => (
     <input
       type='text'
+      ref={(ref) => {this.myTextInput = ref;}}
       value={this.state.query}
       onChange={this.handleChange}
       placeholder='Search repository'
       className='input-text'
       onFocus={this.handleFocus}
-      autoFocus
     />
   )
 
