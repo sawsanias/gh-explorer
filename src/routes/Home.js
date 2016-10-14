@@ -18,9 +18,23 @@ export default class Home extends React.Component {
     this.setState({ query: event.target.value });
   }
 
+  handleFocus = (e) => {
+    e.target.select();
+  }
+
   left = () => <span> GH Explorer </span>;
   right = () => <Button primary icon='search' label='Search' onClick={this.onClick} buttonState={this.state.query.trim() === '' ? 'not-allowed' : 'ready'} />;
-  center = () =>   <input value={this.state.query} onChange={this.handleChange} type='text' placeholder='Search repository' className='input-text' />
+  center = () => (
+    <input
+      type='text'
+      value={this.state.query}
+      onChange={this.handleChange}
+      placeholder='Search repository'
+      className='input-text'
+      onFocus={this.handleFocus}
+      autoFocus
+    />
+  )
 
   componentWillReceiveProps(nextProps) {
     this.setState({
