@@ -62,7 +62,9 @@ export default class Home extends React.Component {
 
     return (
       <FlexView column height='100%' width='100%'>
-        <NavBar {...navBarProps }/>
+        <FlexView shrink={false} basis={100}>
+          <NavBar {...navBarProps }/>
+        </FlexView>
         <FlexView hAlignContent='center' style={{ backgroundColor: 'grey' }} grow column>
           <FlexView grow style={{ backgroundColor: 'blue', maxWidth: 1000 }} width='100%'>
             <RouteHandler/>
