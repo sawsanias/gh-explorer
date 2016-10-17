@@ -20,9 +20,11 @@ export default class Search extends React.Component {
   }
 
   fetchRepositories = (q) => {
-    axios.get('http://api.github.com/search/repositories', { params: { q } })
-    .then(this.assignRespositories)
-    .catch(this.errorHandler); // eslint-disable-line
+    if (typeof q !== 'undefined' && q !== null && q.trim() !== '') {
+      axios.get('http://api.github.com/search/repositories', { params: { q } })
+      .then(this.assignRespositories)
+      .catch(this.errorHandler); // eslint-disable-line
+    }
   }
 
   componentDidMount() {
