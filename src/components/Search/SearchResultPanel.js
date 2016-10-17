@@ -11,7 +11,7 @@ const buttonProps = {
 
 const Card = ({ title, author, children }) => (
   <FlexView className='card'>
-    <FlexView shrink basis='100%' className='description'>
+    <FlexView grow className='description'>
       <FlexView column>
         <FlexView className='title'>{title}</FlexView>
         <FlexView className='subtitle'>
@@ -20,7 +20,7 @@ const Card = ({ title, author, children }) => (
         {children}
       </FlexView>
     </FlexView>
-    <FlexView shrink basis='100%' vAlignContent='center' hAlignContent='right'>
+    <FlexView grow vAlignContent='center' hAlignContent='right'>
       <Button label='More details' onClick={() => {}} {...buttonProps} />
     </FlexView>
   </FlexView>
