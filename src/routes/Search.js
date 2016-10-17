@@ -21,9 +21,10 @@ export default class Search extends React.Component {
   }
 
   fetchRepositories = (q) => {
+    this.setState({ repositories: null, errorMsg: null, isFetching: false });
     if (typeof q !== 'undefined' && q !== null && q.trim() !== '') {
       //reset the states
-      this.setState({ repositories: null, errorMsg: null, isFetching: true });
+      this.setState({ isFetching: true });
       axios.get('http://api.github.com/search/repositories', { params: { q } })
       .then(this.assignRespositories)
       .catch(this.errorHandler); // eslint-disable-line
@@ -49,13 +50,13 @@ export default class Search extends React.Component {
     return (
       <FlexView hAlignContent='center' column grow>
         {isFetching &&
-        (<div style={{ position: 'relative', height: 300 }}>
+        (<div style={{ position: 'relative', height: 300, width: '100%' }}>
           <LoadingSpinner
             size={50}
             message={{ content: 'Loading ...' }}
           />
         </div>)}
-        {undefinedResult && <UndefinedResult />} //should be shown when no search is done
+        {undefinedResult && <UndefinedResult />}
         {errorResult && <ErrorResult errorMsg={this.state.errorMsg} />}
         {emptyResult && <EmptyResult />}
         {foundResult && <SearchResultPanel items={this.state.repositories} />}
