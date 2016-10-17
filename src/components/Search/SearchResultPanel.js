@@ -2,6 +2,12 @@ import React from 'react';
 import Panel from '../Panel';
 import ScrollView from '../Scroll';
 import FlexView from 'react-flexview';
+import Button from '../Button';
+
+
+const buttonProps = {
+  style: { margin: 10, width: 150 }
+};
 
 const Card = ({ title, author, children }) => (
   <FlexView className='card'>
@@ -14,6 +20,9 @@ const Card = ({ title, author, children }) => (
         {children}
       </FlexView>
     </FlexView>
+    <FlexView shrink basis='100%' vAlignContent='center' hAlignContent='right'>
+      <Button label='More details' onClick={() => {}} {...buttonProps} />
+    </FlexView>
   </FlexView>
 );
 
@@ -22,7 +31,7 @@ export default class SearchResultPanel extends React.Component {
   state = { showLowerButton: false };
 
   showButtons = (event) => {
-    this.setState({ showLowerButton: event.nativeEvent.target.scrollTop > 0 });
+    this.setState({ showLowerButton: event.nativeEvent.target.scrollTop > 100 });
   }
 
   scrollToTop = () => {
