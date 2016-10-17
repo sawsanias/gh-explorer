@@ -58,9 +58,9 @@
   },
   "dependencies": {
     "axios": "^0.5.4",
+    "buildo-normalize-css": "^1.1.0",
     "buildo-react-components": "^0.9.1",
     "json-loader": "^0.5.4",
-    "normalize.css": "^4.2.0",
     "react-flexview": "^1.0.1"
   }
 }
