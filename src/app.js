@@ -4,7 +4,7 @@ import Router from 'react-router';
 import routes from './routes';
 import 'react-flexview/lib/flexView.css';
 import './app.scss';
-import 'normalize.css/normalize.css';
+import 'buildo-normalize-css';
 
 const router = Router.create({
   routes, location: Router.HashLocation
