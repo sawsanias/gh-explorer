@@ -9,7 +9,7 @@ import Modal from '../Modal';
 const buttonProps = {
   style: { margin: 10, width: 150 }
 };
-const Card = ({ title, author, children, openDetail }) => (
+const Card = ({ title, author, fullname, children, openDetail }) => (
   <FlexView className='card'>
     <FlexView grow className='description'>
       <FlexView column>
@@ -21,7 +21,7 @@ const Card = ({ title, author, children, openDetail }) => (
       </FlexView>
     </FlexView>
     <FlexView grow vAlignContent='center' hAlignContent='right'>
-      <Button label='More details' onClick={openDetail} {...buttonProps} />
+      <Button label='More details' onClick={() => openDetail(fullname)} {...buttonProps} />
     </FlexView>
   </FlexView>
 );
@@ -42,7 +42,7 @@ export default class SearchResultPanel extends React.Component {
     return (
       <div>
         {this.props.items.map((r, i) => {
-          return <Card key={i} title={r.name} author={r.owner.login} openDetail={this.open}>{r.description}</Card>;
+          return <Card key={i} title={r.name} author={r.owner.login} openDetail={this.open} fullname={r.full_name}>{r.description}</Card>;
         })}
         {this.state.isOpen && this.getModal()}
         {this.state.showLowerButton && <button style={{ position: 'absolute', bottom: 0, right: 0 }} onClick={this.scrollToTop}>
@@ -52,7 +52,10 @@ export default class SearchResultPanel extends React.Component {
     );
   }
 
-  open = () => this.setState({ isOpen: true })
+  open = (fullname) => {
+    this.setState({ isOpen: true });
+    console.log(`repos fullname is ${fullname}`);
+  }
   close = () => this.setState({ isOpen: false })
   getModal = () => (
     <Modal
