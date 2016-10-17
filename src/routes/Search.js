@@ -41,13 +41,14 @@ export default class Search extends React.Component {
   }
 
   render() {
+    const isFetching = this.state.isFetching;
     const errorResult = this.state.errorMsg !== null;
-    const undefinedResult = !errorResult && (typeof this.state.repositories === 'undefined' || this.state.repositories === null);
-    const emptyResult = !errorResult && !undefinedResult && this.state.repositories.length === 0;
-    const foundResult = !errorResult && !undefinedResult && this.state.repositories.length > 0; //simply !undefinedResult && !emptyResult
+    const undefinedResult = !isFetching && !errorResult && (typeof this.state.repositories === 'undefined' || this.state.repositories === null);
+    const emptyResult = !isFetching && !errorResult && !undefinedResult && this.state.repositories.length === 0;
+    const foundResult = !isFetching && !errorResult && !undefinedResult && this.state.repositories.length > 0; //simply !undefinedResult && !emptyResult
     return (
       <FlexView hAlignContent='center' column grow>
-        {this.state.isFetching &&
+        {isFetching &&
         (<div style={{ position: 'relative', height: 300 }}>
           <LoadingSpinner
             size={50}
