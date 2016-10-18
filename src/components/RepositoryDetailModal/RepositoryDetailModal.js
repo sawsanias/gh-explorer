@@ -6,7 +6,6 @@ import Button from '../Button';
 import './repositoryDetailModal.scss';
 
 export default class RepositoryDetailModal extends React.Component {
-
   render() {
     return (
       <Modal
@@ -20,7 +19,12 @@ export default class RepositoryDetailModal extends React.Component {
           </FlexView>
         }
       >
-        TODO: adding the details of  a repository.
+        <div>
+          <div>Name: {this.props.repository.name}</div>
+          <div>Description: {this.props.repository.description}</div>
+          <div>Owner: {this.props.repository.owner.login}</div>
+          <div>Open Issues count: {this.props.repository.open_issues_count}</div>
+        </div>
       </Modal>
     );
   }

@@ -7,18 +7,18 @@ export default class Detail extends React.Component {
   state = { isOpen: this.props.query.openModal };
 
   open = () => {
-    this.setState({ isOpen: false });
+    this.setState({ repository: null, isOpen: false });
   }
   close = () => this.setState({ isOpen: false })
   getModal = () => (
-    <RepositoryDetailModal closeModal={this.close.bind(this)} />
+    <RepositoryDetailModal repository={this.state.repository} closeModal={this.close.bind(this)} />
   )
 
   fetchDetailedRepository = (owner, repos) => {
-    this.setState({ isOpen: true });
+    this.setState({ isOpen: false });
     if (owner && owner.trim() !== '' && repos && repos.trim() !== '') {
       axios.get(`https://api.github.com/repos/${owner}/${repos}`)
-      .then((response) => console.log(response))
+      .then((response) => this.setState({ isOpen: true, repository: response.data } ))
       .catch((error) => console.log(error)); // eslint-disable-line
     }
   }
@@ -31,6 +31,7 @@ export default class Detail extends React.Component {
       this.fetchDetailedRepository(nextProps.params.owner, nextProps.params.repos);
     }
   }
+
   render() {
     return (
       <div>
