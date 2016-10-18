@@ -4,10 +4,10 @@ import axios from 'axios';
 
 
 export default class Detail extends React.Component {
-  state = { isOpen: this.props.query.openModal };
+  state = { isOpen: false };
 
   open = () => {
-    this.setState({ repository: null, isOpen: false });
+    this.setState({ repository: null, isOpen: true });
   }
   close = () => this.setState({ isOpen: false })
   getModal = () => (
