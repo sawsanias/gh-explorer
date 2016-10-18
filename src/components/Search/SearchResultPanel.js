@@ -3,8 +3,7 @@ import Panel from '../Panel';
 import ScrollView from '../Scroll';
 import FlexView from 'react-flexview';
 import Button from '../Button';
-import Modal from '../Modal';
-
+import RepositoryDetailModal from '../RepositoryDetailModal';
 
 const buttonProps = {
   style: { margin: 10, width: 150 }
@@ -51,26 +50,13 @@ export default class SearchResultPanel extends React.Component {
       </div>
     );
   }
-
   open = (fullname) => {
     this.setState({ isOpen: true });
     console.log(`repos fullname is ${fullname}`);
   }
   close = () => this.setState({ isOpen: false })
   getModal = () => (
-    <Modal
-      transitionEnterTimeout={500}
-      transitionLeaveTimeout={500}
-      onDismiss={this.close}
-      title='Repository Details'
-      footer={
-        <FlexView hAlignContent='right'>
-          <Button primary size='small' onClick={this.close}>Close</Button>
-        </FlexView>
-      }
-    >
-      TODO: adding the details of  a repository.
-    </Modal>
+    <RepositoryDetailModal closeModal={this.close.bind(this)} />
   )
 
   render() {
