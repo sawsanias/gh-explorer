@@ -3,7 +3,6 @@ import Panel from '../Panel';
 import ScrollView from '../Scroll';
 import FlexView from 'react-flexview';
 import Button from '../Button';
-import RepositoryDetailModal from '../RepositoryDetailModal';
 
 const buttonProps = {
   style: { margin: 10, width: 150 }
@@ -27,7 +26,7 @@ const Card = ({ title, author, children, openDetail }) => (
 
 export default class SearchResultPanel extends React.Component {
 
-  state = { showLowerButton: false, isOpen: false };
+  state = { showLowerButton: false };
 
   static contextTypes = {
     router: React.PropTypes.func.isRequired
@@ -46,7 +45,6 @@ export default class SearchResultPanel extends React.Component {
         {this.props.items.map((r, i) => {
           return <Card key={i} title={r.name} author={r.owner.login} openDetail={this.goToDetail}>{r.description}</Card>;
         })}
-        {this.state.isOpen && this.getModal()}
         {this.state.showLowerButton && <button style={{ position: 'absolute', bottom: 0, right: 0 }} onClick={this.scrollToTop}>
           Go to top
         </button>}
@@ -56,15 +54,6 @@ export default class SearchResultPanel extends React.Component {
   goToDetail = (o, r) => {
     this.context.router.transitionTo('/search/detail/:owner/:repos', { owner: o, repos: r }, { query: this.context.router.getCurrentQuery().query });
   }
-  open = (fullname) => {
-    this.setState({ isOpen: true });
-    console.log(`repos fullname is ${fullname}`);
-  }
-  close = () => this.setState({ isOpen: false })
-  getModal = () => (
-    <RepositoryDetailModal closeModal={this.close.bind(this)} />
-  )
-
   render() {
     const headerContent = (
       <div> Repositorises </div>
