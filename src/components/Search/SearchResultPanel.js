@@ -54,8 +54,7 @@ export default class SearchResultPanel extends React.Component {
     );
   }
   goToDetail = (o, r) => {
-    console.log(this.context);
-    this.context.router.replaceWith('/search/detail/:owner/:repos', { owner: o, repos: r });
+    this.context.router.transitionTo('/search/detail/:owner/:repos', { owner: o, repos: r }, { query: this.context.router.getCurrentQuery().query });
   }
   open = (fullname) => {
     this.setState({ isOpen: true });
