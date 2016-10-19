@@ -14,7 +14,7 @@ export default class Detail extends React.Component {
   }
   close = () => {
     this.setState({ isOpen: false });
-    this.context.router.goBack();
+    this.context.router.transitionTo('/search', null, { query: this.context.router.getCurrentQuery().query });
   }
   getModal = () => (
     <RepositoryDetailModal repository={this.state.repository} closeModal={this.close.bind(this)} />
