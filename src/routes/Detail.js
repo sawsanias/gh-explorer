@@ -4,35 +4,29 @@ import axios from 'axios';
 
 
 export default class Detail extends React.Component {
-  state = { isOpen: false };
+
+  state = { repository: null };
 
   static contextTypes = {
     router: React.PropTypes.func.isRequired
   }
-  open = () => {
-    this.setState({ repository: null, isOpen: true });
-  }
   close = () => {
-    this.setState({ isOpen: false });
     this.context.router.transitionTo('/search', null, { query: this.context.router.getCurrentQuery().query });
   }
   getModal = () => (
     <RepositoryDetailModal repository={this.state.repository} closeModal={this.close.bind(this)} />
   )
   fetchDetailedRepository = (owner, repos) => {
-    //show the modal only after the response
-    //TODO: in future open modal with spinner
-    this.setState({ isOpen: false });
+    //TODO: Handle errors and add load spinner in the modal
+    this.setState({ repository: null });
     if (owner && owner.trim() !== '' && repos && repos.trim() !== '') {
       axios.get(`https://api.github.com/repos/${owner}/${repos}`)
-      .then((response) => this.setState({ isOpen: true, repository: response.data } ))
+      .then((response) => this.setState({ repository: response.data } ))
       .catch((error) => console.log(error)); // eslint-disable-line
     }
   }
   componentDidMount() {
     this.fetchDetailedRepository(this.props.params.owner, this.props.params.repos);
-  }
-  componentDidUpdate = () => {
   }
   componentWillReceiveProps(nextProps) {
     if ( (nextProps.params.owner !== this.props.params.owner) ||  (nextProps.params.repos !== this.props.params.repos) ) {
@@ -43,7 +37,7 @@ export default class Detail extends React.Component {
   render() {
     return (
       <div>
-        {this.state.isOpen && this.getModal()}
+        {this.getModal()}
       </div>
     );
 
