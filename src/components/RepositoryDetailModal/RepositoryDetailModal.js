@@ -12,7 +12,6 @@ export default class RepositoryDetailModal extends React.Component {
       <Modal
         transitionEnterTimeout={500}
         transitionLeaveTimeout={500}
-        onDismiss={this.close}
         title='Repository Details'
         footer={
           <FlexView hAlignContent='right'>
