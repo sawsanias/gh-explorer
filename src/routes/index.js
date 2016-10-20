@@ -14,7 +14,7 @@ export default (
     <Route name='main' handler={Home} path='/'>
       <DefaultRoute name='placeholder' handler={Placeholder}/>
       <Route name='search' handler={Search} path='search'>
-        <Route name='detail' handler={Detail} path=':id/detail'/>
+        <Route name='detail' handler={Detail} path='detail/:owner/:repos'/>
       </Route>
     </Route>
   </Route>

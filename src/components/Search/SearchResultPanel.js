@@ -3,8 +3,6 @@ import Panel from '../Panel';
 import ScrollView from '../Scroll';
 import FlexView from 'react-flexview';
 import Button from '../Button';
-import Modal from '../Modal';
-
 
 const buttonProps = {
   style: { margin: 10, width: 150 }
@@ -21,15 +19,18 @@ const Card = ({ title, author, children, openDetail }) => (
       </FlexView>
     </FlexView>
     <FlexView grow vAlignContent='center' hAlignContent='right'>
-      <Button label='More details' onClick={openDetail} {...buttonProps} />
+      <Button label='More details' onClick={() => openDetail(author, title)} {...buttonProps} />
     </FlexView>
   </FlexView>
 );
 
 export default class SearchResultPanel extends React.Component {
 
-  state = { showLowerButton: false, isOpen: false };
+  state = { showLowerButton: false };
 
+  static contextTypes = {
+    router: React.PropTypes.func.isRequired
+  }
   showButtons = (event) => {
     this.setState({ showLowerButton: event.nativeEvent.target.scrollTop > 100 });
   }
@@ -42,34 +43,17 @@ export default class SearchResultPanel extends React.Component {
     return (
       <div>
         {this.props.items.map((r, i) => {
-          return <Card key={i} title={r.name} author={r.owner.login} openDetail={this.open}>{r.description}</Card>;
+          return <Card key={i} title={r.name} author={r.owner.login} openDetail={this.goToDetail}>{r.description}</Card>;
         })}
-        {this.state.isOpen && this.getModal()}
         {this.state.showLowerButton && <button style={{ position: 'absolute', bottom: 0, right: 0 }} onClick={this.scrollToTop}>
           Go to top
         </button>}
       </div>
     );
   }
-
-  open = () => this.setState({ isOpen: true })
-  close = () => this.setState({ isOpen: false })
-  getModal = () => (
-    <Modal
-      transitionEnterTimeout={500}
-      transitionLeaveTimeout={500}
-      onDismiss={this.close}
-      title='Repository Details'
-      footer={
-        <FlexView hAlignContent='right'>
-          <Button primary size='small' onClick={this.close}>Close</Button>
-        </FlexView>
-      }
-    >
-      TODO: adding the details of  a repository.
-    </Modal>
-  )
-
+  goToDetail = (o, r) => {
+    this.context.router.transitionTo('/search/detail/:owner/:repos', { owner: o, repos: r }, { query: this.context.router.getCurrentQuery().query });
+  }
   render() {
     const headerContent = (
       <div> Repositorises </div>
@@ -92,10 +76,6 @@ export default class SearchResultPanel extends React.Component {
             return this.getContent();
           }}
         </ScrollView>
-
-
-
-
       </Panel>
     );
   }
