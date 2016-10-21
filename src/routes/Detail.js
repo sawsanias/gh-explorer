@@ -5,7 +5,7 @@ import axios from 'axios';
 
 export default class Detail extends React.Component {
 
-  state = { repository: null };
+  state = { repository: null,  errorMsg: null, isFetching: false };
 
   static contextTypes = {
     router: React.PropTypes.func.isRequired
@@ -14,15 +14,17 @@ export default class Detail extends React.Component {
     this.context.router.transitionTo('/search', null, { query: this.context.router.getCurrentQuery().query });
   }
   getModal = () => (
-    <RepositoryDetailModal repository={this.state.repository} closeModal={this.close.bind(this)} />
+    <RepositoryDetailModal repository={this.state.repository} isFetching={this.state.isFetching} errorMsg={this.state.errorMsg} closeModal={this.close.bind(this)} />
   )
   fetchDetailedRepository = (owner, repos) => {
-    //TODO: Handle errors and add load spinner in the modal
-    this.setState({ repository: null });
+    this.setState({ repository: null, errorMsg: null, isFetching: false });
     if (owner && owner.trim() !== '' && repos && repos.trim() !== '') {
+      this.setState({ isFetching: true });
       axios.get(`https://api.github.com/repos/${owner}/${repos}`)
-      .then((response) => this.setState({ repository: response.data } ))
-      .catch((error) => console.log(error)); // eslint-disable-line
+      .then((response) => this.setState({ repository: response.data, errorMsg: null, isFetching: false } ))
+      .catch(() => this.setState({ repository: null, errorMsg: 'Error!', isFetching: false }) );
+    } else {
+      this.setState({ repository: null, errorMsg: 'missing parameters!', isFetching: false });
     }
   }
   componentDidMount() {
